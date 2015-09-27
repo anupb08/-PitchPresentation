@@ -13,10 +13,11 @@ knit        : slidify::knit2slides
 
 ## Factors for pricing a Diamond     
       
-1. Diamond price is depend upon several parameters.
+1. Diamond price is determined by several factors.
 2. Collected Daimond dataset from the website http://www.pricescope.com/ 
-3. From the Dataset, we choose 6 predictive variables : Shape, Carat, Cut, Color, Clarity & Depth
+3. From the Dataset, we choose 6 predictors : Shape, Carat, Cut, Color, Clarity & Depth
 4. The Target variable is diamond **Price**
+5. We will predict daimond price on the basis of the values of 6 predictors.
 
 --- .class #id 
 
