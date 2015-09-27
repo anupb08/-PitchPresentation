@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Predict Diamond Price</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Predict Diamond Price">
+  <meta name="author" content="Anup Bera">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Predict Diamond Price</h1>
+    <h2>Data Products Project</h2>
+    <p>Anup Bera<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Factors for pricing a Diamond</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Diamond price is depend upon several parameters.</li>
+<li>Collected Daimond dataset from the website <a href="http://www.pricescope.com/">http://www.pricescope.com/</a> </li>
+<li>From the Dataset, we choose 6 predictive variables : Shape, Carat, Cut, Color, Clarity &amp; Depth</li>
+<li>The Target variable is diamond <strong>Price</strong></li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Working in R</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">data &lt;- read.csv(&quot;Diamond_price.csv&quot;, header=TRUE)   
+mydata &lt;- data[, c(1,2,3,4,5,7,10)]     
+str(mydata)      
+</code></pre>
+
+<pre><code>## &#39;data.frame&#39;:    1000 obs. of  7 variables:
+##  $ Shape  : Factor w/ 10 levels &quot;Asscher&quot;,&quot;Cushion&quot;,..: 4 4 4 4 4 4 4 4 4 4 ...
+##  $ Carat  : num  3.13 1.03 1.02 1.63 1.2 1.5 1.71 2.04 2.04 1.67 ...
+##  $ Cut    : Factor w/ 3 levels &quot;Good&quot;,&quot;Ideal&quot;,..: 1 1 1 1 2 2 2 2 2 2 ...
+##  $ Color  : Factor w/ 9 levels &quot;D&quot;,&quot;E&quot;,&quot;F&quot;,&quot;G&quot;,..: 1 5 4 8 2 2 5 3 3 6 ...
+##  $ Clarity: Factor w/ 9 levels &quot;I1&quot;,&quot;I2&quot;,&quot;IF&quot;,..: 5 1 5 5 5 5 5 5 5 5 ...
+##  $ Depth  : num  56.9 57.5 51.3 43 57.9 53 61.4 50.2 39.3 41.6 ...
+##  $ Price  : Factor w/ 868 levels &quot;$1,010&quot;,&quot;$1,036&quot;,..: 428 462 459 565 665 795 827 176 151 756 ...
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Analysis the Dataset</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Random Forest model is used for diamond price prediction. Graph: Actual vs Predicted price.
+<img src="assets/fig/unnamed-chunk-2-1.png" alt="plot of chunk unnamed-chunk-2"> </li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Shiny APP</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li><a href="https://anupb08.shinyapps.io/DataProducts">Here</a> you find the App.</li>
+<li>Select the value of different predictors and press &quot;Submit&quot; button</li>
+<li>You will get the result at the right side.</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Factors for pricing a Diamond'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Working in R'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Analysis the Dataset'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Shiny APP'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

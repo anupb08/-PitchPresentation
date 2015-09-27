@@ -1,0 +1,59 @@
+---
+title       : Predict Diamond Price 
+subtitle    : Data Products Project 
+author      : Anup Bera
+job         : 
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+## Factors for pricing a Diamond     
+      
+1. Diamond price is depend upon several parameters.
+2. Collected Daimond dataset from the website http://www.pricescope.com/ 
+3. From the Dataset, we choose 6 predictive variables : Shape, Carat, Cut, Color, Clarity & Depth
+4. The Target variable is diamond **Price**
+
+--- .class #id 
+
+## Working in R
+```{r}
+data <- read.csv("Diamond_price.csv", header=TRUE)   
+mydata <- data[, c(1,2,3,4,5,7,10)]     
+str(mydata)      
+```
+
+--- .class #id 
+
+## Analysis the Dataset
+
+1. Random Forest model is used for diamond price prediction. Graph: Actual vs Predicted price.
+```{r echo=FALSE,message=FALSE}
+library(caret)
+library(miscTools)
+library(randomForest)
+mydata$Price <- gsub('\\$', '', mydata$Price)
+mydata$Price <- gsub(',', '', mydata$Price)
+mydata$Price <- as.numeric(as.character(mydata$Price))
+mydata <- mydata[mydata$Price <10000,]
+model.forest <- train(Price~., mydata, method = "rf", trControl = trainControl(method = "cv", number = 3))
+r2 <- rSquared(mydata$Price, mydata$Price - predict(model.forest, mydata))
+ggplot(aes(x=actual, y=prediction),data=data.frame(actual=mydata$Price, prediction=predict(model.forest, mydata)))+ geom_point() +geom_abline(color="red") +ggtitle(paste("RandomForest Regression in R r^2=", round(r2,2), sep=""))
+```
+
+--- .class #id 
+
+## Shiny APP
+    
+     
+1. [Here](https://anupb08.shinyapps.io/DataProducts) you find the App.
+2. Select the value of different predictors and press "Submit" button
+3. You will get the result at the right side.
+
+
+
+
